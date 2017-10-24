@@ -1,11 +1,13 @@
-FROM alpine:3.6
+FROM alpine:3.5
 
 MAINTAINER SKB Kontur <devops@skbkontur.ru>
 
 RUN	apk add --no-cache nginx supervisor build-base python-dev py-pip py-cffi py-cairo tzdata
 
 RUN	pip install --upgrade pip && pip install django==1.9 \
+	twisted==13.1 \
 	python-memcached==1.58 \
+	incremental==16.10.1 \
 	txAMQP==0.7 \
 	simplejson==3.11.1 \
 	django-tagging==0.4.6 \
@@ -15,7 +17,7 @@ RUN	pip install --upgrade pip && pip install django==1.9 \
 	cairocffi \
 	whitenoise \
 	scandir \
-	twisted==17.9 \
+	urllib3 \
 	whisper==1.0.2
 
 RUN	pip install https://github.com/graphite-project/graphite-web/archive/1.0.2.zip
